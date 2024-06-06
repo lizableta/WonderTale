@@ -8,6 +8,9 @@ const App = () => {
       <Navbar />
       <Homepage />
     </section>
+
+
+
   </div>
 };
 
