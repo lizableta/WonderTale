@@ -8,8 +8,13 @@ const App = () => {
       <Navbar />
       <Homepage />
     </section>
-
-
+    <section id="Books">
+      <Parallax type="books" />
+    </section>
+    <Portfolio />
+    <section id="Contact">
+      <Contact />
+     </section>
 
   </div>
 };
