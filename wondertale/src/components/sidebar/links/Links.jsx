@@ -33,7 +33,8 @@ const Links = () => {
 
     const items = [
         "Homepage",
-        "Services",
+        "Slider",
+        "Flipbook",
         "Books",
         "Contact",
 
