@@ -1,6 +1,7 @@
 import './homepage.scss';
 import { motion } from 'framer-motion';
 
+
 const textVariants = {
     initial: {
         x: -500,

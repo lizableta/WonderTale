@@ -1,0 +1,70 @@
+/* PixiSlider.css */
+
+/* Define styles for the stars */
+.star {
+    position: absolute;
+    width: 1px; /* Adjust size of the star */
+    height: 1px; /* Adjust size of the star */
+    background-color: #ffffff; /* Set color of the star */
+    animation: twinkle 5s infinite alternate; /* Apply animation to the stars */
+  }
+  
+  /* Define the animation for twinkling stars */
+  @keyframes twinkle {
+    from {
+      opacity: 0; /* Start with the star invisible */
+    }
+    to {
+      opacity: 1; /* End with the star visible */
+    }
+  }
+  
+  
+.arrows-container {
+    margin-top: 10px; /* Adjust as needed */
+  }
+  
+  .prev,
+  .next {
+    background-color: transparent; /* Button background color */
+    border: none; /* Remove button border */
+    color: #333; /* Button text color */
+    font-size: 24px; /* Button icon size */
+    cursor: pointer; /* Add pointer cursor on hover */
+    margin: 0 10px; /* Adjust button margin */
+  }
+  
+  .prev:hover,
+  .next:hover {
+    color: #555; /* Darken button text color on hover */
+  }
+  
+  .prev.active,
+  .next.active {
+    color: #fff; /* Active button text color */
+  }
+  
+  .prev.inactive,
+  .next.inactive {
+    color: #999; /* Inactive button text color */
+  }
+  
+  /* Styling for the slider dots */
+  .slider-dots {
+    margin-top: 20px; /* Adjust as needed */
+  }
+  
+  .dot {
+    display: inline-block; /* Display dots inline */
+    width: 10px; /* Dot width */
+    height: 10px; /* Dot height */
+    border-radius: 50%; /* Make dots circular */
+    background-color: #ccc; /* Dot color */
+    margin-right: 5px; /* Adjust space between dots */
+    cursor: pointer; /* Add pointer cursor on hover */
+  }
+  
+  .dot.active {
+    background-color: #555; /* Change active dot color */
+  }
+  
