@@ -50,17 +50,17 @@ const Contact = () => {
                 <motion.h1 variants={variants}>Let's Work Together</motion.h1>
                 <motion.div className="item" variants={variants}>
                     <h2>Mail</h2>
-                    <span>hello@react.dev</span>
+                    <span>wondertale@gmail.com</span>
                 </motion.div>
 
                 <motion.div className="item" variants={variants}>
                     <h2>Address</h2>
-                    <span>Kosov</span>
+                    <span>Prishtine, Kosove</span>
                 </motion.div>
 
                 <motion.div className="item" variants={variants}>
-                    <h2>Phone</h2>
-                    <span>+383 </span>
+                    <h2>Phone Number</h2>
+                    <span>+383 49826372 </span>
                 </motion.div>
             </div>
 
@@ -82,8 +82,8 @@ const Contact = () => {
                     <input type="email" required placeholder="Email" name="email" />
                     <textarea rows={8} placeholder="Message" name="message" />
                     <button>Submit</button>
-                    {error && "Error"}
-                    {success && "Success"}
+                    {error && <div className="success">The message was sent successfully !</div>}
+                    {success && <div className="success">The message was sent successfully !</div>}
 
                 </motion.form>
 
