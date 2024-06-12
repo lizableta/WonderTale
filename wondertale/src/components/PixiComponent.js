@@ -1,42 +1,44 @@
 import React, { useRef, useEffect, useState } from 'react';
+import * as PIXI from 'pixi.js';
 
-const PixiComponent = ({ image }) => {
-  const [loaded, setLoaded] = useState(false);
+const PixiComponent = ({ images }) => {
   const containerRef = useRef(null);
+  const [app, setApp] = useState(null);
 
   useEffect(() => {
-    const loadImage = async () => {
-      try {
-        const img = new Image();
-        img.src = image;
+    // Initialize PIXI application
+    const app = new PIXI.Application({ width: 800, height: 600, transparent: true });
+    containerRef.current.appendChild(app.view);
+    setApp(app);
 
-        img.onload = () => {
-          setLoaded(true);
-          containerRef.current.style.backgroundImage = `url(${image})`;
-        };
-      } catch (error) {
-        console.error('Error loading image:', error);
-      }
+    // Load images
+    const loader = new PIXI.Loader();
+    images.forEach((image, index) => {
+      loader.add(`image-${index}`, image);
+    });
+    loader.load((loader, resources) => {
+      // Create sprites for each image
+      images.forEach((_, index) => {
+        const sprite = new PIXI.Sprite(resources[`image-${index}`].texture);
+        sprite.visible = index === 0; // Show the first image, hide others
+        app.stage.addChild(sprite);
+      });
+    });
+
+    // Slide functionality
+    let currentIndex = 0;
+    const goToNextSlide = () => {
+      app.stage.children[currentIndex].visible = false;
+      currentIndex = (currentIndex + 1) % images.length;
+      app.stage.children[currentIndex].visible = true;
     };
 
-    loadImage();
-  }, [image]);
+    const interval = setInterval(goToNextSlide, 3000);
 
-  return (
-    <div
-      ref={containerRef}
-      style={{
-        width: '100%',
-        height: '100%',
-        position: 'relative',
-        overflow: 'hidden',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      {!loaded && <div>Loading...</div>}
-    </div>
-  );
+    return () => clearInterval(interval);
+  }, [images]);
+
+  return <div ref={containerRef}></div>;
 };
 
 export default PixiComponent;
